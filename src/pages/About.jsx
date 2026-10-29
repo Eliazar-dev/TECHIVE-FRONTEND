@@ -1,0 +1,50 @@
+import { PageHero, SectionHead, Reveal, CTA, useSEO } from '../components/ui'
+import { values, audiences } from '../data'
+
+const pillars = [
+  ['Our Mission', 'To empower businesses, institutions, ministries and entrepreneurs with technology that simplifies operations, improves efficiency, strengthens digital presence and creates opportunities for growth.'],
+  ['Our Vision', 'To become a trusted technology partner recognized for innovative digital solutions, reliable service and meaningful impact.'],
+  ['Our Commitment', 'Building useful technology, delivering value and helping our clients move confidently into the digital future.'],
+]
+
+export default function About() {
+  useSEO('About Us', 'Techive IT Solutions is a technology-driven company turning ideas into practical, reliable and scalable digital solutions.')
+  return (
+    <>
+      <PageHero eyebrow="About Us" title="Archiving Innovation. Coding the Future." text="Techive IT Solutions is a technology-driven company committed to transforming ideas into practical, reliable and scalable digital solutions." />
+      <section className="bg-zinc-50 py-24">
+        <div className="container-x grid gap-6 md:grid-cols-3">
+          {pillars.map(([t, x], n) => (
+            <Reveal key={t} delay={n * 100}>
+              <div className="card h-full"><div className="mb-4 h-1 w-12 rounded bg-brand-grad" /><h2 className="text-xl font-extrabold">{t}</h2><p className="mt-3 leading-relaxed text-zinc-600">{x}</p></div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+      <section className="bg-zinc-100 py-24">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <span className="eyebrow">Who we are</span>
+            <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">Creativity, technical expertise and innovation</h2>
+            <p className="mt-5 leading-relaxed text-zinc-600">From modern websites and intelligent business systems to seamless payment experiences and data-driven solutions, we combine creativity and engineering to deliver technology that addresses real needs.</p>
+            <p className="mt-4 leading-relaxed text-zinc-600">We specialize in web development, application development, custom business systems, software modernization, payment integration, data analytics and search engine optimization.</p>
+          </Reveal>
+          <Reveal className="grid grid-cols-2 gap-4">
+            {audiences.map((a) => <div key={a} className="rounded-2xl bg-ink p-6 text-lg font-bold text-white">{a}</div>)}
+          </Reveal>
+        </div>
+      </section>
+      <section className="bg-ink py-24 text-white">
+        <div className="container-x">
+          <SectionHead dark eyebrow="Our values" title="How we work" />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((v, n) => (
+              <Reveal key={v.title} delay={n * 80}><div className="h-full rounded-2xl border border-white/10 bg-white/[.04] p-6"><h3 className="text-lg font-bold">{v.title}</h3><p className="mt-2 text-sm text-zinc-400">{v.text}</p></div></Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CTA title="Partner with Techive" text="Let's talk about what technology can do for you." />
+    </>
+  )
+}

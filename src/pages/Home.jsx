@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import HeroCarousel from '../components/HeroCarousel'
 import { Reveal, SectionHead, CTA, useSEO } from '../components/ui'
-import { services, solutions, audiences, values, process } from '../data'
+import { services, solutions, audiences, values, process, academy } from '../data'
 
 export default function Home() {
   useSEO('', 'Techive IT Solutions — websites, apps, custom business systems, payment integration, analytics and SEO for businesses, institutions, ministries and entrepreneurs.')
@@ -61,6 +61,27 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 text-center"><Link to="/solutions" className="btn-dark">View all solutions <ArrowRight size={18} /></Link></div>
+        </div>
+      </section>
+
+      {/* Academy */}
+      <section className="bg-zinc-50 py-24">
+        <div className="container-x">
+          <SectionHead eyebrow="Techive Academy" title="Learn to code, build your future" text="Practical, hands-on training in the most in-demand technologies. From web development to data science, we prepare you for real-world challenges." />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {academy.courses.map((c, n) => (
+              <Reveal key={c.name} delay={(n % 3) * 80}>
+                <div className="card h-full">
+                  <span className={`inline-flex h-10 w-10 items-center justify-center rounded-lg ${c.bg} text-lg font-bold text-white`}>{c.mark}</span>
+                  <h3 className="mt-4 text-lg font-bold">{c.name}</h3>
+                  <p className="mt-2 text-sm text-zinc-600">{c.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link to="/academy" className="btn-dark">Join the waitlist <ArrowRight size={18} /></Link>
+          </div>
         </div>
       </section>
 
